@@ -35,50 +35,6 @@ $(document).ready(function () {
         });
     }
 
-    //api call for Geocode! note they are flipped
-    function apiCallEst(latValue, longValue) {
-        function setHeader(xhr) {
-            xhr.setRequestHeader('user-key', '2feb645051247922577a0d2f4a387122');
-        }
-        console.log('establishments api');
-        $.ajax({
-            url: 'https://developers.zomato.com/api/v2.1/geocode?lat=' + latValue + '&lon=' + longValue,
-            type: 'GET',
-            dataType: 'json',
-            success: function (receivedApiData) {
-                console.log(receivedApiData);
-            },
-            error: function () {
-                alert('boo!');
-            },
-            beforeSend: setHeader
-        });
-    }
-    //api call for est (dont need but WHY it no work?)
-    function apiCallGeocode(latValue, longValue) {
-        function setHeader(xhr) {
-            xhr.setRequestHeader('user-key', '2feb645051247922577a0d2f4a387122');
-        }
-        console.log('GeocodeApi');
-        $.ajax({
-            url: 'https://developers.zomato.com/api/v2.1/establishments?lat=' + latValue + '&lon=' + longValue,
-            type: 'GET',
-            dataType: 'json',
-            success: function (receivedApiData) {
-                console.log(receivedApiData);
-            },
-            error: function () {
-                alert('boo!');
-            },
-            beforeSend: setHeader
-        });
-    }
-
-
-
-
-    // end of api section now populate html
-
     function populateWeather(data) {
         console.log(data.current_observation.temp_f)
         var temp_f = data.current_observation.temp_f;
@@ -93,11 +49,100 @@ $(document).ready(function () {
         var coools = `${temp_f} degrees F and ${conditions}`
         $('.weather-results').html(coools);
 
-        apiCallEst(latValue, longValue);
+        //        apiCallEst(latValue, longValue);
         apiCallGeocode(latValue, longValue);
 
     }
+
+    //api call for Geocode! note they are flipped
+    function apiCallGeocode(latValue, longValue) {
+        function setHeader(xhr) {
+            xhr.setRequestHeader('user-key', '2feb645051247922577a0d2f4a387122');
+        }
+        console.log('geocode api');
+        $.ajax({
+            url: 'https://developers.zomato.com/api/v2.1/geocode?lat=' + latValue + '&lon=' + longValue,
+            type: 'GET',
+            dataType: 'json',
+            success: function (receivedApiData) {
+                //                console.log(receivedApiData.nearby_restaurants);
+
+                populateHtml(receivedApiData.nearby_restaurants);
+            },
+            error: function () {
+                alert('boo!');
+            },
+            beforeSend: setHeader
+        });
+    }
+    //api call for est (dont need but WHY it no work?)
+    //    function apiCallEst(latValue, longValue) {
+    //        function setHeader(xhr) {
+    //            xhr.setRequestHeader('user-key', '2feb645051247922577a0d2f4a387122');
+    //        }
+    //        console.log('GeocodeApi');
+    //        $.ajax({
+    //            url: 'https://developers.zomato.com/api/v2.1/establishments?lat=' + latValue + '&lon=' + longValue,
+    //            type: 'GET',
+    //            dataType: 'json',
+    //            success: function (receivedApiData) {
+    //                console.log(receivedApiData);
+    //            },
+    //            error: function () {
+    //                alert('boo!');
+    //            },
+    //            beforeSend: setHeader
+    //        });
+    //    }
+
+
+
+
+    // end of api section now populate html
+    function populateHtml(establishments) {
+        console.log(establishments);
+        var htmlDisplay = ""; // empty var to store one li for each one of the results
+        $.each(establishments, function (establishmentsKey, establishmentsValue) {
+
+            htmlDisplay += "<div class='restaurant'>";
+            htmlDisplay += "<h1>" + establishmentsValue.restaurant.name + "</h1>";
+            htmlDisplay += "<h2>" + establishmentsValue.restaurant.cuisines + "</h2>";
+            htmlDisplay += "<h2>Average cost for 2</h2>";
+            htmlDisplay += "<h2>" + establishmentsValue.restaurant.average_cost_for_two + "</h2>";
+            htmlDisplay += "<p>";
+            htmlDisplay += "<span>" + establishmentsValue.restaurant.user_rating.aggregate_rating + "/5</span>";
+            htmlDisplay += "<span> &#9734, </span><span>" + establishmentsValue.restaurant.user_rating.aggregate_rating + "</span>";
+            htmlDisplay += "</p>";
+            htmlDisplay += "<p>'2 village center circle, Moosup 06354'</p>";
+            htmlDisplay += "<a href='cool'>Directions & Menu</a>";
+            htmlDisplay += "</div>";
+        });
+        if (establishments.length > 0) {
+            $(".results-counter").text("Showing " + establishments.length + " results");
+        } else {
+            $(".results-counter").text("No results");
+        }
+
+        $(".results-wrapper")
+            .empty()
+            .append('errHTML')
+            .prop('hidden', false);
+        //use the HTML output to show it in the index.html
+        $(".results-wrapper").html(htmlDisplay);
+        console.log("here");
+        $(".results-wrapper").show();
+    }
+
 });
+
+
+
+
+
+
+
+
+
 // description of application function (question)
 // user inputs zipcode to get various outputs idea is to have very light interface and functionality, to many of these apps give to many toptions
 // (1)media only is main, with first block displaying a image of the weather conditions with temperature under it, as well as city name
@@ -131,7 +176,7 @@ $(document).ready(function () {
 // (1) Via header which includes name of application as well as a brief description
 // (2) Below description will be a user input search box  instructing user to enter the zip code
 // (3) Create an unsorted list from the results of api call of top 9 restaurants with jpeg img
-// (3.5) Return weather as text string.
+// (3.5) Return weather as text string, graphic is unecessary fluff
 // (4) The information will be ordered displaying The name as <h1> with cost and cuisine as <h2> and rest as <h3>
 // (5) Clickable/touchable button that directs to zomato site with all relevent information
 // (6) drop down menu appears under city and weather info to sort via: popularity,rating,type
