@@ -107,15 +107,16 @@ $(document).ready(function () {
             htmlDisplay += "<div class='restaurant'>";
             htmlDisplay += "<h1>" + establishmentsValue.restaurant.name + "</h1>";
             htmlDisplay += "<h2>" + establishmentsValue.restaurant.cuisines + "</h2>";
-            htmlDisplay += "<h2>Average cost for 2</h2>";
-            htmlDisplay += "<h2>" + establishmentsValue.restaurant.average_cost_for_two + "</h2>";
+            htmlDisplay += "<h2>Average cost</h2>";
+            htmlDisplay += "<h2>" + (establishmentsValue.restaurant.average_cost_for_two / 2) + establishmentsValue.restaurant.currency + "</h2>";
             htmlDisplay += "<p>";
             htmlDisplay += "<span>" + establishmentsValue.restaurant.user_rating.aggregate_rating + "/5</span>";
-            htmlDisplay += "<span> &#9734, </span><span>" + establishmentsValue.restaurant.user_rating.aggregate_rating + "</span>";
+            htmlDisplay += "<span> &#9734, </span><span>" + establishmentsValue.restaurant.user_rating.votes + "votes </span>";
             htmlDisplay += "</p>";
-            htmlDisplay += "<p>'2 village center circle, Moosup 06354'</p>";
-            htmlDisplay += "<a href='cool'>Directions & Menu</a>";
+            htmlDisplay += "<p>" + establishmentsValue.restaurant.location.address + "</p>";
+            htmlDisplay += "<a href=" + establishmentsValue.restaurant.url + ">Directions & Menu</a>"; // establishmentsValue.restaurant.url is the specific one needed.
             htmlDisplay += "</div>";
+            // establishmentsValue.restaurant.url is the specific one needed.
         });
         if (establishments.length > 0) {
             $(".results-counter").text("Showing " + establishments.length + " results");
