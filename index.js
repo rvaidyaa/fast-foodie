@@ -45,8 +45,9 @@ $(document).ready(function () {
         var icon = data.current_observation.icon_url;
         var conditions = data.current_observation.weather;
         console.log(skies);
+        var url = data.current_observation.forecast_url;
         //$('.open-screen').hide();
-        var coools = `${temp_f} degrees F and ${conditions}`
+        var coools = `${temp_f} degrees F and ${conditions} <p> <a href=${url}>Forecast Information</a> <p>`
         $('.weather-results').html(coools);
 
         //        apiCallEst(latValue, longValue);
@@ -115,6 +116,7 @@ $(document).ready(function () {
             htmlDisplay += "</p>";
             htmlDisplay += "<p>" + establishmentsValue.restaurant.location.address + "</p>";
             htmlDisplay += "<a href=" + establishmentsValue.restaurant.url + ">Directions & Menu</a>"; // establishmentsValue.restaurant.url is the specific one needed.
+            htmlDisplay += "<img src=" + establishmentsValue.restaurant.featured_image + ">" //
             htmlDisplay += "</div>";
             // establishmentsValue.restaurant.url is the specific one needed.
         });
