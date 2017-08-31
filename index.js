@@ -13,7 +13,7 @@ $(document).ready(function () {
         event.preventDefault();
         var zipCode = $('.user-input').val();
         // check for valid number, also html input type is set to num or number
-        if (zipCode.length !== 5) {
+        if (zipCode.length !== 5) { // if not number add error handle
             alert('Please enter a valid zipcode');
         } else {
 
