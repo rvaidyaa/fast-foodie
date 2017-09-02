@@ -116,7 +116,11 @@ $(document).ready(function () {
             htmlDisplay += "</p>";
             htmlDisplay += "<p>" + establishmentsValue.restaurant.location.address + "</p>";
             htmlDisplay += "<a href=" + establishmentsValue.restaurant.url + ">Directions & Menu</a>"; // establishmentsValue.restaurant.url is the specific one needed.
-            htmlDisplay += "<img src=" + establishmentsValue.restaurant.featured_image + ">" //
+            if (establishmentsValue.restaurant.featured_image != "") {
+                htmlDisplay += "<img src=" + establishmentsValue.restaurant.featured_image + ">" //
+            } else {
+                htmlDisplay += "<img src=/media/default.jpg>" //
+            }
             htmlDisplay += "</div>";
             // establishmentsValue.restaurant.url is the specific one needed.
         });

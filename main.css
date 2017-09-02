@@ -1,3 +1,26 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+html {
+    /*    no matter if its bigger or smaller background will be fixed */
+    background: rgba(0, 0, 0, 0) url("/media/background.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+main {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+}
+
 ::-webkit-input-placeholder {
     /* Chrome/Opera/Safari */
     color: firebrick;
@@ -22,35 +45,12 @@
     text-shadow: 0px 0px 6px black;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    box-sizing: border-box;
-}
-
-html {
-    /*    no matter if its bigger or smaller background will be fixed */
-    background: rgba(0, 0, 0, 0) url("/media/background.jpg") no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}
-
-main {
-    width: 80%;
-    margin: 0 auto;
-    text-align: center;
-}
-
 h1 {
     padding: 10px;
-    color: maroon;
+    color: white;
     text-shadow: 0px 0px 6px black;
     font-size: 24px;
     display: block;
-    text-decoration: underline;
 }
 
 h2 {
@@ -70,14 +70,14 @@ h2 {
 
 .open-screen h1,
 .open-screen h2 {
-    color: maroon;
+    color: white;
     text-shadow: 0px 0px 6px black;
 }
 
 .weather-results {
-    font-size: 26px;
+    font-size: 22px;
     border: 1px greenyellow;
-    color: maroon;
+    color: white;
     background-image: url(/media/transparent.jpg);
     text-shadow: 0px 0px 3px black;
     border-radius: 0.5rem;
@@ -120,7 +120,7 @@ p {
 
 .restaurant {
     border-radius: 0.5rem;
-    background-image: url(../media/transparent.jpg);
+    background-image: url(/media/transparent.jpg);
     padding: 2rem;
     margin-bottom: 1rem;
     width: 48%;
@@ -132,6 +132,7 @@ p {
 .restaurant img {
     width: 90%;
     border-radius: 0.5rem;
+    height: 200px;
 }
 
 .restaurant a {
@@ -144,7 +145,7 @@ a:link {
 
 a:visited {
     text-decoration: line-through;
-    color: maroon;
+    color: aqua;
 }
 
 a:hover {
@@ -172,5 +173,12 @@ a:active {
     .restaurant img {
         width: 95%;
         height: 45%;
+    }
+    form input {
+        margin: 0px;
+        font-size: 13px;
+    }
+    .weather-results {
+        font-size: 16px;
     }
 }
