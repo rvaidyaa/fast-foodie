@@ -8,7 +8,7 @@
 
 html {
     /*    no matter if its bigger or smaller background will be fixed */
-    background: rgba(0, 0, 0, 0) url("/media/background.jpg") no-repeat center center fixed;
+    background: rgba(0, 0, 0, 0) url("../media/background.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -61,7 +61,7 @@ h2 {
 
 .open-screen {
     border-radius: 0.5rem;
-    background-image: url(/media/transparent.jpg);
+    background-image: url(../media/transparent.jpg);
     padding: 2rem;
     margin-bottom: 1rem;
     margin-left: auto;
@@ -78,7 +78,7 @@ h2 {
     font-size: 22px;
     border: 1px greenyellow;
     color: white;
-    background-image: url(/media/transparent.jpg);
+    background-image: url(../media/transparent.jpg);
     text-shadow: 0px 0px 3px black;
     border-radius: 0.5rem;
     width: 80%;
@@ -120,7 +120,7 @@ p {
 
 .restaurant {
     border-radius: 0.5rem;
-    background-image: url(/media/transparent.jpg);
+    background-image: url(../media/transparent.jpg);
     padding: 2rem;
     margin-bottom: 1rem;
     width: 48%;
