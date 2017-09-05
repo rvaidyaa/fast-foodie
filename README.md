@@ -1,5 +1,5 @@
 
-# soinoeirbvoer
+# FastFoodie
 Thinkful (https://www.thinkful.com) Api Capstone Project - Zomato and Wunderground.
 
 ![landing page](https://github.com/rvaidyaa/weather-restaurant-app/blob/master/github-images/homePageWithOutResults.PNG)
@@ -11,23 +11,19 @@ Thinkful (https://www.thinkful.com) Api Capstone Project - Zomato and Wundergrou
 
 ## Background
 
-I built this app because I enjoy visiting National Parks and I wanted to have a convenient way to look up National Park information to be able to plan my next visit.
-
+App was created to quickly decide if its worth eating out tonight.
 ## Use Case
-This app gives people a way to search information on the National Parks to find a description, weather information, and directions to that park. The user is able to save the park to a bucket list and they are able to check that park off of their bucket list once they have visited.
+By inputing zipcode this application will return the weather as well as the 9 best restaurants in the area with links to menu directions and additional weather info.
 
 ## Working Prototype
 
-You can access a working prototype of the app here: https://national-park-explorer.herokuapp.com/
+You can access a working prototype of the app here: https://rvaidyaa.github.io/weather-restaurant-app/
 
 ## Functionality
 The app's functionality includes:
-* Search for National Park information.
-* The app returns information such as park description, weather information, directions, and park website.
-* Add chosen park to a Bucket List section.
-* Update park to visited and save to Been There Done That section.
-* Delete parks from Bucket List and Been There Done That sections.
-
+* User inputs zip code of interest.
+* The app returns weather information and link to forecast information.
+*  9 best restaurants in the area, their price, their location, type of cusine and link to menu + directions.
 ## Technology
 
 * HTML
@@ -46,6 +42,7 @@ App is built to be responsive across mobile, tablet, laptop, and desktop screen 
 This is v1.0 of the app, but future enhancements are expected to include:
 
 //further improvements.
+
 
 
 
