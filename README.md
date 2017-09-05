@@ -32,16 +32,19 @@ The app's functionality includes:
 *jQuery
 *APIs
 
-The app uses AJAX JSON calls to the <a href="developer.NPS.gov">National Park Service</a> Open Platform API to return the national park search results.
 
 ## Responsive
-App is built to be responsive across mobile, tablet, laptop, and desktop screen resolutions.
+App is built to be responsive across devices
 
 ## Development Roadmap
 
 This is v1.0 of the app, but future enhancements are expected to include:
 
-//further improvements.
+add user filter to filter via:
+*cost
+*rating
+*popularity
+
 
 
 
