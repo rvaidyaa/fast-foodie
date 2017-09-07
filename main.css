@@ -8,7 +8,7 @@
 
 html {
     /*    no matter if its bigger or smaller background will be fixed */
-    background: rgba(0, 0, 0, 0) url("../media/background.jpg") no-repeat center center fixed;
+    background: rgba(0, 0, 0, 0) url("media/background.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -16,7 +16,7 @@ html {
 }
 
 main {
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
     text-align: center;
 }
@@ -51,6 +51,8 @@ h1 {
     text-shadow: 0px 0px 6px black;
     font-size: 24px;
     display: block;
+    height: 5rem;
+    overflow: hidden;
 }
 
 h2 {
@@ -61,7 +63,7 @@ h2 {
 
 .open-screen {
     border-radius: 0.5rem;
-    background-image: url(../media/transparent.jpg);
+    background-image: url(media/transparent.jpg);
     padding: 2rem;
     margin-bottom: 1rem;
     margin-left: auto;
@@ -78,13 +80,15 @@ h2 {
     font-size: 22px;
     border: 1px greenyellow;
     color: white;
-    background-image: url(../media/transparent.jpg);
+    background-image: url(media/transparent.jpg);
     text-shadow: 0px 0px 3px black;
     border-radius: 0.5rem;
     width: 80%;
     margin-bottom: 1rem;
     margin-left: auto;
     margin-right: auto;
+    padding-top: .75rem;
+    padding-bottom: .75rem;
 }
 
 .weather-results .a {}
@@ -108,10 +112,6 @@ form input {
     border: 1px solid black;
 }
 
-.user-button {}
-
-.restaurant h2 {}
-
 p {
     color: greenyellow;
     text-shadow: 0px 0px 6px black;
@@ -120,13 +120,14 @@ p {
 
 .restaurant {
     border-radius: 0.5rem;
-    background-image: url(../media/transparent.jpg);
-    padding: 2rem;
+    background-image: url(media/transparent.jpg);
+    padding: 0.5rem;
     margin-bottom: 1rem;
-    width: 48%;
+    width: 32%;
     display: inline-block;
     margin-left: 0.5%;
     margin-right: 0.5%;
+    vertical-align: top;
 }
 
 .restaurant img {
@@ -137,6 +138,11 @@ p {
 
 .restaurant a {
     font-size: 14px;
+}
+
+a {
+    margin-bottom: .5rem;
+    display: block;
 }
 
 a:link {
@@ -166,6 +172,7 @@ a:active {
     }
     h1 {
         font-size: 18px;
+        height: 3.5rem;
     }
     h2 {
         font-size: 16px;
@@ -175,7 +182,7 @@ a:active {
         height: 45%;
     }
     form input {
-        margin: 0px;
+        margin: 0.5rem 0;
         font-size: 13px;
     }
     .weather-results {

@@ -1,72 +1,55 @@
-//api call
-//creating variables to store weather information array
-
-//
-
 var conditions;
 var forecast;
 
 $(document).ready(function () {
-
     // code for accepting user input of zipcode with error handling
     $('#form').submit(function (event) {
         event.preventDefault();
         var zipCode = $('.user-input').val();
         // check for valid number, also html input type is set to num or number
-        if (zipCode.length !== 5) { // if not number add error handle
+        if (zipCode.length !== 5) {
             alert('Please enter a valid zipcode');
         } else {
 
-            console.log(zipCode);
             //Returns the current temperature, weather condition, humidity, wind, 'feels like' temperature, barometric pressure, and visibility.
-            conditions = 'http://api.wunderground.com/api/9d4257c7e0413f4b/conditions/q/' + zipCode + '.json';
+            conditions = 'https://api.wunderground.com/api/9d4257c7e0413f4b/conditions/q/' + zipCode + '.json';
             //Returns a summary of the weather for the next 3 days. This includes high and low temperatures, a string text forecast and the conditions.
-            forecast = 'http://api.wunderground.com/api/9d4257c7e0413f4b/forecast/q/' + zipCode + '.json';
-            console.log(conditions);
-            console.log(forecast);
+            forecast = 'https: //api.wunderground.com/api/9d4257c7e0413f4b/forecast/q/' + zipCode + '.json';
             weatherInfo(conditions);
         }
     });
     //api call for weather and store to variables
     function weatherInfo(conditions) {
         $.getJSON(conditions, function (data) {
-            console.log(data);
             populateWeather(data);
         });
     }
 
     function populateWeather(data) {
-        console.log(data.current_observation.temp_f)
         var temp_f = data.current_observation.temp_f;
         var latValue = Math.round(data.current_observation.display_location.latitude * 100) / 100;
         var longValue = Math.round(data.current_observation.display_location.longitude * 100) / 100;
-        console.log(latValue, longValue);
         var skies = data.current_observation.weather;
         var icon = data.current_observation.icon_url;
         var conditions = data.current_observation.weather;
-        console.log(skies);
         var url = data.current_observation.forecast_url;
-        //$('.open-screen').hide();
         var coools = `${temp_f} degrees F and ${conditions} <p> <a href=${url}>Forecast Information</a> <p>`
         $('.weather-results').html(coools);
-
-        //        apiCallEst(latValue, longValue);
         apiCallGeocode(latValue, longValue);
 
     }
 
-    //api call for Geocode! note they are flipped
+    //api call for Geocode
     function apiCallGeocode(latValue, longValue) {
         function setHeader(xhr) {
             xhr.setRequestHeader('user-key', '2feb645051247922577a0d2f4a387122');
         }
-        console.log('geocode api');
         $.ajax({
             url: 'https://developers.zomato.com/api/v2.1/geocode?lat=' + latValue + '&lon=' + longValue,
             type: 'GET',
             dataType: 'json',
             success: function (receivedApiData) {
-                //                console.log(receivedApiData.nearby_restaurants);
+
 
                 populateHtml(receivedApiData.nearby_restaurants);
             },
@@ -76,32 +59,9 @@ $(document).ready(function () {
             beforeSend: setHeader
         });
     }
-    //api call for est (dont need but WHY it no work?)
-    //    function apiCallEst(latValue, longValue) {
-    //        function setHeader(xhr) {
-    //            xhr.setRequestHeader('user-key', '2feb645051247922577a0d2f4a387122');
-    //        }
-    //        console.log('GeocodeApi');
-    //        $.ajax({
-    //            url: 'https://developers.zomato.com/api/v2.1/establishments?lat=' + latValue + '&lon=' + longValue,
-    //            type: 'GET',
-    //            dataType: 'json',
-    //            success: function (receivedApiData) {
-    //                console.log(receivedApiData);
-    //            },
-    //            error: function () {
-    //                alert('boo!');
-    //            },
-    //            beforeSend: setHeader
-    //        });
-    //    }
-
-
-
 
     // end of api section now populate html
     function populateHtml(establishments) {
-        console.log(establishments);
         var htmlDisplay = ""; // empty var to store one li for each one of the results
         $.each(establishments, function (establishmentsKey, establishmentsValue) {
 
@@ -119,7 +79,7 @@ $(document).ready(function () {
             if (establishmentsValue.restaurant.featured_image != "") {
                 htmlDisplay += "<img src=" + establishmentsValue.restaurant.featured_image + ">" //
             } else {
-                htmlDisplay += "<img src=..media/default.jpg>" //
+                htmlDisplay += "<img src=media/default.jpg>" //
             }
             htmlDisplay += "</div>";
             // establishmentsValue.restaurant.url is the specific one needed.
@@ -136,7 +96,6 @@ $(document).ready(function () {
             .prop('hidden', false);
         //use the HTML output to show it in the index.html
         $(".results-wrapper").html(htmlDisplay);
-        console.log("here");
         $(".results-wrapper").show();
     }
 
