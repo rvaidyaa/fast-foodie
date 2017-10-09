@@ -67,6 +67,11 @@ $(document).ready(function () {
 
             htmlDisplay += "<div class='restaurant'>";
             htmlDisplay += "<h1>" + establishmentsValue.restaurant.name + "</h1>";
+            if (establishmentsValue.restaurant.featured_image != "") {
+                htmlDisplay += "<img src=" + establishmentsValue.restaurant.featured_image + ">" //
+            } else {
+                htmlDisplay += "<img src=media/default.jpg>" //
+            }
             htmlDisplay += "<h2>" + establishmentsValue.restaurant.cuisines + "</h2>";
             htmlDisplay += "<h2>Average cost</h2>";
             htmlDisplay += "<h2>" + (establishmentsValue.restaurant.average_cost_for_two / 2) + establishmentsValue.restaurant.currency + "</h2>";
@@ -76,11 +81,6 @@ $(document).ready(function () {
             htmlDisplay += "</p>";
             htmlDisplay += "<p>" + establishmentsValue.restaurant.location.address + "</p>";
             htmlDisplay += "<a href=" + establishmentsValue.restaurant.url + ">Directions & Menu</a>"; // establishmentsValue.restaurant.url is the specific one needed.
-            if (establishmentsValue.restaurant.featured_image != "") {
-                htmlDisplay += "<img src=" + establishmentsValue.restaurant.featured_image + ">" //
-            } else {
-                htmlDisplay += "<img src=media/default.jpg>" //
-            }
             htmlDisplay += "</div>";
             // establishmentsValue.restaurant.url is the specific one needed.
         });
