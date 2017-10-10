@@ -143,6 +143,7 @@ p {
 
 .restaurant a {
     font-size: 14px;
+    padding-bottom: 24px;
 }
 
 a {
@@ -199,5 +200,8 @@ a:active {
         line-height: 16px;
         text-align: center;
         border: 1px solid black;
+    }
+    .open-screen h2 {
+        font-size: 13px;
     }
 }
