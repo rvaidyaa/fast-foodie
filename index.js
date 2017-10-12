@@ -33,7 +33,8 @@ $(document).ready(function () {
         var icon = data.current_observation.icon_url;
         var conditions = data.current_observation.weather;
         var url = data.current_observation.forecast_url;
-        var coools = `${temp_f} degrees F and ${conditions} <p> <a href=${url}>Forecast Information</a> <p>`
+        var coools = `${temp_f} degrees F and ${conditions} `
+        coools += "<a href=" + url + " target='_blank'>Forecast Information</a>"
         $('.weather-results').html(coools);
         apiCallGeocode(latValue, longValue);
 
@@ -80,7 +81,7 @@ $(document).ready(function () {
             htmlDisplay += "<span> &#9734, </span><span>" + establishmentsValue.restaurant.user_rating.votes + "votes </span>";
             htmlDisplay += "</p>";
             htmlDisplay += "<p>" + establishmentsValue.restaurant.location.address + "</p>";
-            htmlDisplay += "<a href=" + establishmentsValue.restaurant.url + ">Directions & Menu</a>"; // establishmentsValue.restaurant.url is the specific one needed.
+            htmlDisplay += "<a href=" + establishmentsValue.restaurant.url + " target='_blank'>Directions & Menu</a>"; // establishmentsValue.restaurant.url is the specific one needed.
             htmlDisplay += "</div>";
             // establishmentsValue.restaurant.url is the specific one needed.
         });
